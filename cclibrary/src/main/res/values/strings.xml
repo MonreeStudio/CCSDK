@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">CrashCatch</string>
+    <string name="null_pointer_exception">NullPointerException</string>
+    <string name="array_index_out_of_bounds_exception">ArrayIndexOutOfBoundsException</string>
+    <string name="index_out_of_bounds_exception">IndexOutOfBoundsException</string>
+    <string name="out_of_memory_error">OutOfMemoryError</string>
+    <string name="called_from_wrong_thread_exception">CalledFromWrongThreadException</string>
+    <string name="bugly_java_crash">BuglyJavaCrash</string>
+    <string name="bugly_anr_crash">BuglyAnrCrash</string>
+    <string name="bugly_native_crash">BuglyNativeCrash</string>
+    <string name="jni_test">JNITest</string>
+    <string name="jni_signal_test">JNI信号量测试</string>
+    <string name="dialog_title">游戏发生了崩溃</string>
+    <string name="dialog_title1">App发生异常！</string>
+    <string name="dialog_title2">App发生错误！</string>
+    <string name="dialog_content1">异常类型：</string>
+    <string name="dialog_content2">错误类型：</string>
+    <string name="dialog_tip">具体异常信息已自动上传至服务器，以便开发人员进行分析排查。</string>
+    <string name="dialog_customer_service_tip">如需帮助，请联系客服进行咨询。客服QQ：</string>
+    <string name="dialog_button_positive">重启游戏</string>
+    <string name="dialog_button_negative">关闭</string>
+    <string name="text_test">测试文本</string>
+</resources>

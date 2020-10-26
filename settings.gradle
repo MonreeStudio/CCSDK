@@ -1,0 +1,3 @@
+include ':cclibrary'
+include ':app'
+rootProject.name = "CrashCatchSDK"
