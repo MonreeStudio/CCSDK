@@ -16,7 +16,7 @@ JavaVM *jvm;
 
 void exception_handler(int errorCode){
     JNIEnv *mEnv;
-    jint rs = jvm->AttachCurrentThread(&mEnv, NULL);
+    jint rs = jvm->AttachCurrentThread(&mEnv, nullptr);
     assert (rs == JNI_OK);
 
     error_cnt += 1;
@@ -64,7 +64,7 @@ void exception_handler(int errorCode){
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_monree_cclibrary_JNI_init(JNIEnv *env, jclass clazz) {
+Java_com_ssjj_cclibrary_JNI_init(JNIEnv *env, jclass clazz) {
     jint rs = env->GetJavaVM(&jvm);
     assert(rs == JNI_OK);
 

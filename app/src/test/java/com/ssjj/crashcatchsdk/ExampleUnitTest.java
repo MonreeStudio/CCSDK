@@ -1,4 +1,4 @@
-package com.monree.crashcatchsdk;
+package com.ssjj.crashcatchsdk;
 
 import org.junit.Test;
 

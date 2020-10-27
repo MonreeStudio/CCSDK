@@ -1,8 +1,6 @@
-package com.monree.cclibrary;
+package com.ssjj.cclibrary;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,10 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.Arrays;
 
 public class CrashActivity extends AppCompatActivity {
-    private final String logTag = "MonreeTestLog";
+    private final String logTag = "CCTestLog";
     private final String activityName = "CrashActivity";
 
     private TextView tv_exception;
@@ -42,13 +39,14 @@ public class CrashActivity extends AppCompatActivity {
         btn_close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                android.os.Process.killProcess(android.os.Process.myPid());
             }
         });
         btn_restart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent LaunchIntent = getPackageManager().getLaunchIntentForPackage(getApplication().getPackageName());
+                assert LaunchIntent != null;
                 LaunchIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(LaunchIntent);
             }

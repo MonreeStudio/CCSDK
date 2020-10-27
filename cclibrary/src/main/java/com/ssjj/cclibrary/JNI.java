@@ -1,4 +1,4 @@
-package com.monree.cclibrary;
+package com.ssjj.cclibrary;
 
 public class JNI {
     public static native void init();

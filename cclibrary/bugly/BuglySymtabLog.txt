@@ -78,3 +78,19 @@ symbolFile=D:\Document\CrashCatchSDK\cclibrary\bugly\buglySymbol_libjni_exceptio
 file=D:\Document\CrashCatchSDK\cclibrary\build\intermediates\cmake\debug\obj\x86_64\libjni_exceptionCatch.so
 uuid=9e12f9542fe3040080e88819821630c4
 
+symbolFile=D:\Document\CrashCatchSDK\cclibrary\bugly\buglySymbol_libjni_exceptionCatch_arm64-v8a-34356.zip
+file=D:\Document\CrashCatchSDK\cclibrary\build\intermediates\cmake\debug\obj\arm64-v8a\libjni_exceptionCatch.so
+uuid=343562accfab308062b0bb765b51f356
+
+symbolFile=D:\Document\CrashCatchSDK\cclibrary\bugly\buglySymbol_libjni_exceptionCatch_armeabi-v7a-a36ba.zip
+file=D:\Document\CrashCatchSDK\cclibrary\build\intermediates\cmake\debug\obj\armeabi-v7a\libjni_exceptionCatch.so
+uuid=a36ba47bdcaa01936bdd5b98b4b99eb8
+
+symbolFile=D:\Document\CrashCatchSDK\cclibrary\bugly\buglySymbol_libjni_exceptionCatch_x86-d3c66.zip
+file=D:\Document\CrashCatchSDK\cclibrary\build\intermediates\cmake\debug\obj\x86\libjni_exceptionCatch.so
+uuid=d3c669dc1cb83814cd81cd13c551c48a
+
+symbolFile=D:\Document\CrashCatchSDK\cclibrary\bugly\buglySymbol_libjni_exceptionCatch_x86_64-f324e.zip
+file=D:\Document\CrashCatchSDK\cclibrary\build\intermediates\cmake\debug\obj\x86_64\libjni_exceptionCatch.so
+uuid=f324e8829be393d43d46fb9645c2551b
+

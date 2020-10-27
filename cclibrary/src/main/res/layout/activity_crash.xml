@@ -15,7 +15,7 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/white"
-        android:background="@color/color4399"
+        android:background="@drawable/shape_gradient"
         android:textSize="20sp" />
 
     <LinearLayout
@@ -27,19 +27,20 @@
         android:layout_marginBottom="10dp"
         android:orientation="vertical">
 
-
         <TextView
             android:id="@+id/tv_exception"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="left|center_vertical"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="10dp"
+            tools:ignore="RtlHardcoded" />
         <TextView
             android:id="@+id/tv_help"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="left|center_vertical"
-            android:text="@string/dialog_customer_service_tip"/>
+            android:text="@string/dialog_customer_service_tip"
+            tools:ignore="RtlHardcoded" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -58,7 +59,8 @@
             android:layout_weight="1"
             android:text="@string/dialog_button_negative"
             android:background="@drawable/button_negative_corner_background"
-            android:textColor="@color/color4399" />
+            android:textColor="@color/colorSsjj"
+            tools:ignore="ButtonStyle" />
 
         <Button
             android:id="@+id/btn_restart"
@@ -68,6 +70,7 @@
             android:layout_weight="1"
             android:text="@string/dialog_button_positive"
             android:background="@drawable/button_corner_background"
-            android:textColor="#ffffff" />
+            android:textColor="#ffffff"
+            tools:ignore="ButtonStyle" />
     </LinearLayout>
 </LinearLayout>

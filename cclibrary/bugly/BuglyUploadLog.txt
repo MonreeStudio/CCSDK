@@ -78,3 +78,19 @@ file=D:\Document\CrashCatchSDK\cclibrary\bugly\buglySymbol_libjni_exceptionCatch
 sha1=3f41424754b71ed52336d2b23078f66ac6339a03
 appId=73f651bd53
 
+file=D:\Document\CrashCatchSDK\cclibrary\bugly\buglySymbol_libjni_exceptionCatch_arm64-v8a-34356.zip
+sha1=4754a0db62ab5512d94d6dff5135fba75d8b3beb
+appId=73f651bd53
+
+file=D:\Document\CrashCatchSDK\cclibrary\bugly\buglySymbol_libjni_exceptionCatch_armeabi-v7a-a36ba.zip
+sha1=2c24a3888074ef7439add015b5fd58b74bd5f48b
+appId=73f651bd53
+
+file=D:\Document\CrashCatchSDK\cclibrary\bugly\buglySymbol_libjni_exceptionCatch_x86-d3c66.zip
+sha1=5d669923f98a44841b6005dfa309396c1aa89849
+appId=73f651bd53
+
+file=D:\Document\CrashCatchSDK\cclibrary\bugly\buglySymbol_libjni_exceptionCatch_x86_64-f324e.zip
+sha1=e6b2e5a570cbc38e6a5b77cb957f3ed30c1ecec5
+appId=73f651bd53
+

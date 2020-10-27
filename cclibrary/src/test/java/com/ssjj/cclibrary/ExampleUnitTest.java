@@ -1,4 +1,4 @@
-package com.monree.cclibrary;
+package com.ssjj.cclibrary;
 
 import org.junit.Test;
 

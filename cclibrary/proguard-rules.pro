@@ -19,3 +19,11 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# 不混淆某个类（使用者可以看到类名）
+-keep class com.ssjj.cclibrary.CCSDK
+
+# 不混淆某个类中以 public 开始的方法（使用者可以看到该方法）
+-keepclassmembers class com.ssjj.cclibrary.CCSDK {
+    public *;
+}

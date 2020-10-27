@@ -1,4 +1,4 @@
-package com.monree.cclibrary;
+package com.ssjj.crashcatchsdk;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.monree.cclibrary.test", appContext.getPackageName());
+        assertEquals("com.monree.crashcatchsdk", appContext.getPackageName());
     }
 }

@@ -1,5 +1,6 @@
-package com.monree.cclibrary;
+package com.ssjj.cclibrary;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 
@@ -9,45 +10,41 @@ import android.util.Log;
 public class CrashHandler implements Thread.UncaughtExceptionHandler {
     private Thread.UncaughtExceptionHandler mDefaultUncaughtExceptionHandler;
     private Context context;
-    private String supportNumber;
+    private String supportNumber;   //客服QQ号码
+    private final String logTag = "CCTestLog";
 
     public static CrashHandler getInstance() {
         return CrashHandlerHolder.INSTANCE;
     }
 
     public void init(Context context) {
-        Log.d("CrashReportInfo", "开始初始化");
         this.context = context;
         mDefaultUncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
         Thread.setDefaultUncaughtExceptionHandler(this);
-        Log.d("CrashReportInfo", "JNI初始化");
         JNI.init();
-        Log.d("CrashReportInfo", "初始化成功");
+        Log.d(logTag, "JNI初始化成功");
     }
 
     @Override
     public void uncaughtException(Thread thread, final Throwable throwable) {
-        Log.d("CrashReportInfo", "异常捕获");
         Intent intent = new Intent(context, CrashActivity.class);
         intent.putExtra("Throwable", throwable);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
-        Log.d("CrashReportInfo", "异常捕获2");
         boolean isMainThread = Looper.getMainLooper().getThread().getId() == thread.getId();
-        Log.d("CrashReportInfo", "是否为主线程：" + isMainThread);
+        Log.d(logTag, "当前线程是否为主线程：" + isMainThread);
         if (isMainThread) {
             mDefaultUncaughtExceptionHandler.uncaughtException(thread, throwable);
-            Log.d("CrashReportInfo", "异常捕获3");
         }
         else {
             ((CrashActivity) context).runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     mDefaultUncaughtExceptionHandler.uncaughtException(Thread.currentThread(), throwable);
-                    Log.d("CrashReportInfo", "异常捕获3");
                 }
             });
         }
+        Log.d(logTag, "捕获成功");
     }
 
     public String getSupportNumber() {
@@ -59,6 +56,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
     }
 
     private static class CrashHandlerHolder {
+        @SuppressLint("StaticFieldLeak")
         static final CrashHandler INSTANCE = new CrashHandler();
     }
 
