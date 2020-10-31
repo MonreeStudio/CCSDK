@@ -90,6 +90,6 @@ Java_com_ssjj_cclibrary_JNI_init(JNIEnv *env, jclass clazz) {
         sigact.sa_handler = exception_handler;
         sigaction(SIGABRT, &sigact, nullptr); // 注册要捕捉的信号
         sigaction(SIGSEGV, &sigact, nullptr); // 注册要捕捉的信号
-        LOGE("信号量检测");
+        LOGE("信号量检测初始化");
     }
 }

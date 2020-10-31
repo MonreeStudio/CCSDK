@@ -1,11 +1,14 @@
 package com.ssjj.cclibrary;
 
 import android.annotation.SuppressLint;
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 
 import android.os.Looper;
 import android.util.Log;
+
+import java.util.List;
 
 public class CrashHandler implements Thread.UncaughtExceptionHandler {
     private Thread.UncaughtExceptionHandler mDefaultUncaughtExceptionHandler;
@@ -29,6 +32,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
     public void uncaughtException(Thread thread, final Throwable throwable) {
         Intent intent = new Intent(context, CrashActivity.class);
         intent.putExtra("Throwable", throwable);
+        intent.putExtra("Progress", android.os.Process.myPid());
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
         boolean isMainThread = Looper.getMainLooper().getThread().getId() == thread.getId();
@@ -45,6 +49,15 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
             });
         }
         Log.d(logTag, "捕获成功");
+        exitAPP();
+    }
+
+    private void exitAPP() {
+        ActivityManager activityManager = (ActivityManager) context.getApplicationContext().getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.AppTask> appTaskList = activityManager.getAppTasks();
+        for (ActivityManager.AppTask appTask : appTaskList) {
+            appTask.finishAndRemoveTask();
+        }
     }
 
     public String getSupportNumber() {

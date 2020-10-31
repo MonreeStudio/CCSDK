@@ -10,10 +10,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.util.Arrays;
+
 
 public class CrashActivity extends AppCompatActivity {
-    private final String logTag = "CCTestLog";
-    private final String activityName = "CrashActivity";
+    private String logTag = "CCTestLog";
+    private String activityName = "CrashActivity";
+    private int preProgressId;
+
+    private boolean hasSent;
 
     private TextView tv_exception;
     private TextView tv_help;
@@ -25,11 +32,14 @@ public class CrashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crash);
         Log.d(logTag, activityName + "->生命周期onCreate");
+        Log.d(logTag, "所在进程ID：" + android.os.Process.myPid());
         initTextView();
         initButton();
         Throwable throwable = (Throwable) getIntent().getSerializableExtra("Throwable");
         throwable.printStackTrace();
+        preProgressId = getIntent().getIntExtra("Progress", -1);
         initContent(throwable);
+        postDataBySocket(throwable.toString() + Arrays.toString(throwable.getStackTrace()));
     }
 
     private void initButton() {
@@ -40,6 +50,8 @@ public class CrashActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 android.os.Process.killProcess(android.os.Process.myPid());
+                if(preProgressId != -1)
+                    android.os.Process.killProcess(preProgressId);
             }
         });
         btn_restart.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +77,33 @@ public class CrashActivity extends AppCompatActivity {
         else
             tv_exception.setText(getString(R.string.dialog_content1) + e.toString() + "\n" + getString(R.string.dialog_tip));
         tv_help.setText(getString(R.string.dialog_customer_service_tip) + CrashHandler.getInstance().getSupportNumber());
+    }
+
+    private void postDataBySocket(final String stackTrace) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                synchronized (this) {
+                    if(!hasSent) {
+                        Log.d("CrashReportInfo", "尝试通过Socket上传日志");
+                        try {
+                            Socket socket = new Socket("8.129.27.96", 8888);
+                            PrintWriter out=new PrintWriter(socket.getOutputStream());
+                            out.write("CCSDK崩溃异常信息：" + stackTrace);
+                            out.flush();
+                            Log.d("CrashReportInfo", "日志上传成功");
+                            socket.close();
+                            hasSent = true;
+                        }
+                        catch (Exception e) {
+                            e.printStackTrace();
+                            Log.d("CrashReportInfo", "上传失败，发生异常：" + e);
+                        }
+                    }
+                }
+
+            }
+        }).start();
     }
 
     @Override
